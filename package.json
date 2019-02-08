@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "babel": "^6.23.0",
+    "history": "^4.7.2",
     "jquery": "^3.3.1",
     "pubsub-js": "file:pubsubJS-master",
     "react": "^16.7.0",
