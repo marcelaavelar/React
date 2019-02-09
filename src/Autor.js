@@ -12,9 +12,6 @@ class FormularioAutor extends Component {
     super();
     this.state = {nome:'', email:'', senha:''};
     this.enviaForm = this.enviaForm.bind(this);
-    this.setNome = this.setNome.bind(this);
-    this.setEmail = this.setEmail.bind(this);
-    this.setSenha = this.setSenha.bind(this);
   }
 
   enviaForm(evento) {
@@ -43,25 +40,19 @@ class FormularioAutor extends Component {
     });
   }
   
-  setNome(evento) {
-  this.setState({nome:evento.target.value});
-  }
-
-  setEmail(evento) {
-  this.setState({email:evento.target.value});
-  }
-
-  setSenha(evento) {
-  this.setState({senha:evento.target.value});
+  salvaAlteracao(nomeInput, evento) {
+    var campoSendoAlterado = {};
+    campoSendoAlterado[nomeInput] = evento.target.value;
+    this.setState(campoSendoAlterado);
   }
 
   render() {
     return (
       <div className="pure-form pure-form-aligned">
         <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
-          <InputCustomized id="nome" type="text" name="nome" value={this.state.nome} onChange={this.setNome} label="Nome" />                  
-          <InputCustomized id="email" type="email" name="email" value={this.state.email} onChange={this.setEmail} label="Email" />
-          <InputCustomized id="senha" type="password" name="senha" value={this.state.senha} onChange={this.setSenha} label="Senha" />
+          <InputCustomized id="nome" type="text" name="nome" value={this.state.nome} onChange={this.salvaAlteracao.bind(this,'nome')} label="Nome" />                  
+          <InputCustomized id="email" type="email" name="email" value={this.state.email} onChange={this.salvaAlteracao.bind(this,'email')} label="Email" />
+          <InputCustomized id="senha" type="password" name="senha" value={this.state.senha} onChange={this.salvaAlteracao.bind(this,'senha')} label="Senha" />
           <ButtonSubmitCustomized label="Gravar" />
         </form>
       </div>
